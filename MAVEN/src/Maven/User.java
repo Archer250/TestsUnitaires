@@ -41,12 +41,21 @@ public class User {
     }
 
     public void setPassword(String _password) {
-        if() {
+        if(pregMatch("/[a-z]/", _password) && pregMatch("/[A-Z]/", _password) && pregMatch("/[0-9]/", _password)) {
             this._password = _password;
         }
     }
     
     public boolean pregMatch(String pattern, String content) {
         return content.matches(pattern);
+    }
+    
+    public boolean verifPassword(String _password) {
+        if(_password.length() >= 9 && pregMatch("/[a-z]/", _password) && pregMatch("/[A-Z]/", _password) && pregMatch("/[0-9]/", _password)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
